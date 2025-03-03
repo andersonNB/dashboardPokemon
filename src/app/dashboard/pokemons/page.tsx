@@ -21,12 +21,20 @@ const getPokemons = async (
 const PokemonPage = async () => {
 	const pokemons = await getPokemons();
 
+	console.log(pokemons);
+
 	return (
 		<div className="flex flex-col">
 			<div className="flex flex-wrap gap-10 items-center justify-center"></div>
-			{pokemons.map((pokemon, index) => (
-				<Image alt={pokemon?.name} src={pokemon.id} key={index} />
-			))}
+			{/* {pokemons.map((pokemon, index) => (
+				<Image
+					alt={pokemon?.name}
+					src={pokemon.id}
+					key={index}
+					width={48}
+					height={48}
+				/>
+			))} */}
 		</div>
 	);
 };
