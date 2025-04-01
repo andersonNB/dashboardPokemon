@@ -28,7 +28,7 @@ const getPokemons = async (
 export const PokemonGrid = async () => {
 	const pokemons = await getPokemons(Math.random() * 5, 0);
 	return (
-		<div className="flex flex-wrap items-center gap-4">
+		<div className="flex flex-wrap items-center gap-4  justify-center ">
 			{pokemons.map((pokemon) => (
 				<PokemonCard pokemon={pokemon} key={pokemon.id} />
 			))}
