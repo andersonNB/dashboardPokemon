@@ -3,6 +3,9 @@ import Image from "next/image";
 import {notFound} from "next/navigation";
 import React, {use, useEffect, useState} from "react";
 import {Pokemon} from "@/app/pokemons/interfaces/pokemon";
+import Error from "./error";
+import {FaArrowLeft} from "react-icons/fa";
+import Link from "next/link";
 
 interface Props {
 	params: Promise<{id: string}>;
@@ -77,15 +80,23 @@ export default function PokemonPage({params}: Props) {
 		fetchData();
 	}, [id]);
 
-	if (!pokemon) return <div>Loading...</div>;
+	if (!pokemon) return <Error />;
 
 	return (
 		<div className="flex mt-5 flex-col items-center text-slate-800">
 			<div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white shadow-lg p-3">
-				<div className="mt-2 mb-8 w-full">
-					<h1 className="px-2 text-xl font-bold text-slate-700 capitalize">
-						#{pokemon.id} {pokemon.name}
-					</h1>
+				<div className="mt-2 mb-8 w-full  ">
+					<div className="flex  items-center justify-between ">
+						<h1 className="px-2 text-xl font-bold text-slate-700 capitalize">
+							#{pokemon.id} {pokemon.name}
+						</h1>
+						<Link href="/dashboard/pokemons">
+							<p className="text-slate-700 capitalize  flex items-center gap-2 ">
+								<FaArrowLeft />
+								Regresar
+							</p>
+						</Link>
+					</div>
 
 					<div className="flex flex-col justify-center items-center">
 						<div
