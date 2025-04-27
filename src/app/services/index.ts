@@ -24,6 +24,6 @@ export const getPokemons = async (
 		id: pokemon.url.split("/")[6],
 		name: pokemon.name,
 	}));
-	// throw new Error("Error fetching pokemons");
+	// throw new Error("Error fetching pokemons");-> levantamos el error de servidor en la page que los lista
 	return pokemons;
 };
