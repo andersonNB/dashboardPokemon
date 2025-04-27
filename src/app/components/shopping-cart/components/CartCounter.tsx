@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const CartCounter = ({value}: Props) => {
-	const count = useAppSelector((state) => state.counter.count);
+	const {count, isReady} = useAppSelector((state) => state.counter);
 	const dispatch = useAppDispatch();
 
 	const handleRest = () => {
@@ -27,7 +27,7 @@ export const CartCounter = ({value}: Props) => {
 
 	return (
 		<>
-			<span className="text-9xl">{count}</span>
+			<span className="text-9xl">{isReady ? count : "Cargando..."}</span>
 			<div className="flex">
 				<button
 					className="flex items-center justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transition-all w-[100px] mr-2"
