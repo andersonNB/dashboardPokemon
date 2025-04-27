@@ -1,32 +1,8 @@
 import React from "react";
 import {SimplePokemon} from "../interfaces/simple-pokemon";
-import {Pokemon} from "../interfaces/pokemons-response";
 import {PokemonCard} from "./PokemonCard";
 
-const getPokemons = async (
-	limit = 20,
-	offset = 0
-): Promise<SimplePokemon[]> => {
-	const data: Pokemon = await fetch(
-		"https://pokeapi.co/api/v2/pokemon?limit=" + limit + "&offset=" + offset
-	)
-		.then((res) => res.json())
-		.catch((error) => {
-			throw new Error("Error fetching pokemons: ", error);
-		});
-
-	const pokemons = data.results.map((pokemon) => ({
-		id: pokemon.url.split("/")[6],
-		name: pokemon.name,
-	}));
-
-	// throw new Error("Error fetching pokemons");
-
-	return pokemons;
-};
-
-export const PokemonGrid = async () => {
-	const pokemons = await getPokemons(Math.random() * 5, 0);
+export const PokemonGrid = async ({pokemons}: {pokemons: SimplePokemon[]}) => {
 	return (
 		<div className="flex flex-wrap items-center gap-4  justify-center ">
 			{pokemons.map((pokemon) => (
