@@ -1,10 +1,16 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {SimplePokemon} from "../interfaces/simple-pokemon";
-import {IoHeartOutline} from "react-icons/io5";
+import {IoHeart, IoHeartOutline} from "react-icons/io5";
+import {useAppSelector} from "@/app/store";
 
 export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
+	const isFavorite = useAppSelector((state) => !!state.pokemons[pokemon?.id]);
+
+	console.log(isFavorite);
+
 	return (
 		<div className="mx-auto right-0 mt-2 w-60">
 			<div className="bg-white rounded overflow-hidden shadow-lg">
@@ -35,7 +41,11 @@ export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
 					<Link href="/account/campaigns">
 						<div className="px-4 py-2 hover:bg-gray-100 flex items-center">
 							<div className="text-green-600">
-								<IoHeartOutline color="red" />
+								{isFavorite ? (
+									<IoHeart color="red" />
+								) : (
+									<IoHeartOutline color="red" />
+								)}
 							</div>
 							<div className="pl-3">
 								<p className="text-sm font-medium text-gray-800 leading-none">
