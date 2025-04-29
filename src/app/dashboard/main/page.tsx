@@ -1,5 +1,6 @@
 import React from "react";
 import WidgetsGrid from "@/app/components/dashboard/WidgetsGrid";
+import PasteUploader from "@/app/components/PasteUploader";
 
 export const metadata = {
 	title: "Dashboard",
@@ -12,6 +13,7 @@ const MainPage = () => {
 			<h1 className="mt-2 tet-3xl">Dashboard</h1>
 			<span className="text-xl">Información general</span>
 			<WidgetsGrid />
+			<PasteUploader />
 		</div>
 	);
 };
