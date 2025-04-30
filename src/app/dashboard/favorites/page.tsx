@@ -1,18 +1,17 @@
+"use client";
 import {PokemonGrid} from "@/app/pokemons/components/PokemonGrid";
-import React from "react";
+import {useAppSelector} from "@/app/store";
 
-export const metadata = {
-	title: "Favoritos",
-	description: "Section Favorites",
-};
+const PokemonPage = () => {
+	const pokemonsState = useAppSelector((state) => state.pokemons);
 
-const PokemonPage = async () => {
+	const favoritePokemons = Object.values(pokemonsState);
 	return (
 		<div className="flex flex-col gap-3 bg-yellow-400  ml-4  w-full">
 			<span className="text-xl font-semibold">
 				Pokémons Favoritos <small className="text-gray-500">Global state</small>{" "}
 			</span>
-			<PokemonGrid pokemons={[]} />
+			<PokemonGrid pokemons={favoritePokemons} />
 		</div>
 	);
 };
