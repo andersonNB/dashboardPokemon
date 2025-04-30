@@ -5,11 +5,13 @@ import React from "react";
 import {SimplePokemon} from "../interfaces/simple-pokemon";
 import {IoHeart, IoHeartOutline} from "react-icons/io5";
 import {useAppSelector} from "@/app/store";
+import {useDispatch} from "react-redux";
+import {toggleFavorite} from "@/app/store/pokemons/pokemonSlice";
 
 export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
 	const isFavorite = useAppSelector((state) => !!state.pokemons[pokemon?.id]);
 
-	console.log(isFavorite);
+	const dispatch = useDispatch();
 
 	return (
 		<div className="mx-auto right-0 mt-2 w-60">
@@ -38,23 +40,24 @@ export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
 					</div>
 				</div>
 				<div className="border-b">
-					<Link href="/account/campaigns">
-						<div className="px-4 py-2 hover:bg-gray-100 flex items-center">
-							<div className="text-green-600">
-								{isFavorite ? (
-									<IoHeart color="red" />
-								) : (
-									<IoHeartOutline color="red" />
-								)}
-							</div>
-							<div className="pl-3">
-								<p className="text-sm font-medium text-gray-800 leading-none">
-									No es favorito
-								</p>
-								<p className="text-xs text-gray-500">View your campaigns</p>
-							</div>
+					<div className="px-4 py-2 hover:bg-gray-100 flex items-center">
+						<button
+							onClick={() => dispatch(toggleFavorite(pokemon))}
+							className="focus:outline-none"
+						>
+							{isFavorite ? (
+								<IoHeart color="red" />
+							) : (
+								<IoHeartOutline color="red" />
+							)}
+						</button>
+						<div className="pl-3">
+							<p className="text-sm font-medium text-gray-800 leading-none">
+								{isFavorite ? "Es favorito" : "No es favorito"}
+							</p>
+							<p className="text-xs text-gray-500">View your campaigns</p>
 						</div>
-					</Link>
+					</div>
 				</div>
 			</div>
 		</div>
