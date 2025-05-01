@@ -5,8 +5,17 @@ interface PokemonsState {
 	[key: string]: SimplePokemon;
 }
 
+const getInitialStateLocalStorage = (): PokemonsState => {
+	const favorite = JSON.parse(
+		localStorage.getItem("favorite-pokemons") ?? "{}"
+	);
+
+	return favorite;
+};
+
 const initialState: PokemonsState = {
 	"1": {id: "1", name: "bulbasaur"},
+	...getInitialStateLocalStorage(),
 };
 
 const pokemonsSlice = createSlice({
@@ -22,6 +31,8 @@ const pokemonsSlice = createSlice({
 			} else {
 				state[id] = pokemon;
 			}
+
+			localStorage.setItem("favorite-pokemons", JSON.stringify(state));
 		},
 	},
 });

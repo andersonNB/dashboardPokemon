@@ -10,6 +10,7 @@ const PokemonPage = () => {
 	const favoritePokemons = Object.values(pokemonsStore);
 
 	const [pokemons, setPokemons] = useState(favoritePokemons);
+	console.log(setPokemons);
 
 	return (
 		<div className="flex flex-col gap-3 bg-yellow-400  ml-4  w-full">
