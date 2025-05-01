@@ -14,7 +14,6 @@ const pokemonsSlice = createSlice({
 	initialState,
 	reducers: {
 		toggleFavorite(state, action: PayloadAction<SimplePokemon>) {
-			console.log({state, action});
 			const pokemon = action.payload;
 			const {id} = pokemon;
 

@@ -12,7 +12,6 @@ interface Props {
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
 	const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-	console.log(res);
 	if (!res.ok) notFound();
 	return res.json();
 };
