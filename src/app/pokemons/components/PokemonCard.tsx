@@ -9,7 +9,9 @@ import {useDispatch} from "react-redux";
 import {toggleFavorite} from "@/app/store/pokemons/pokemonSlice";
 
 export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
-	const isFavorite = useAppSelector((state) => !!state.pokemons[pokemon?.id]);
+	const isFavorite = useAppSelector(
+		(state) => !!state.pokemons.favorites[pokemon?.id]
+	);
 
 	const dispatch = useDispatch();
 
