@@ -1,6 +1,7 @@
 "use client";
 import {PokemonGrid} from "@/app/pokemons/components/PokemonGrid";
 import {useAppSelector} from "@/app/store";
+import {useEffect} from "react";
 import {IoHeartOutline} from "react-icons/io5";
 
 const PokemonPage = () => {
@@ -9,6 +10,10 @@ const PokemonPage = () => {
 	const favoritePokemons = Object.values(pokemonsStore);
 
 	// const [pokemons] = useState(favoritePokemons);
+
+	useEffect(() => {
+		console.log("render");
+	}, []);
 
 	return (
 		<div className="flex flex-col gap-3 bg-yellow-400  ml-4  w-full">
