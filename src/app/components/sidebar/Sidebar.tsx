@@ -57,7 +57,7 @@ export const Sidebar = () => {
 	return (
 		<div
 			id="menu"
-			className="bg-gray-900  z-10 text-slate-300 w-64 left-0 dark:bg-orange-400 dark:text-white "
+			className="bg-gray-900  z-10 text-slate-300 w-64 left-0 dark:text-white "
 			style={{width: "350px"}}
 		>
 			<div id="logo" className="my-4 px-6">

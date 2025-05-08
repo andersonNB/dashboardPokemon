@@ -1,3 +1,4 @@
+import React from "react";
 import type {Metadata} from "next";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
@@ -27,7 +28,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-orange-400 flex min-h-screen`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-orange-400 flex min-h-screen dark:bg-[#1A2238] `}
 			>
 				<Providers>
 					<Sidebar />

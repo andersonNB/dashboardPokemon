@@ -9,7 +9,7 @@ export const metadata = {
 
 const MainPage = () => {
 	return (
-		<div className="bg-orange-100 w-full p-2">
+		<div className="bg-orange-100 w-full p-2 dark:bg-[#1A2238] dark:text-white">
 			<h1 className="mt-2 tet-3xl">Dashboard</h1>
 			<span className="text-xl">Información general</span>
 			<WidgetsGrid />
