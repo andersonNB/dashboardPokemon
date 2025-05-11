@@ -69,12 +69,12 @@ export const Sidebar = () => {
 						</div>
 						<div className="flex justify-center items-center">
 							<button
-								className="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+								className="h-12 w-12 dark:bg-white rounded-full "
 								onClick={handleToggle}
 							>
 								{darkMode === "dark" ? (
 									<svg
-										className="fill-violet-700 block dark:hidden"
+										className="fill-violet-700 block "
 										fill="currentColor"
 										viewBox="0 0 20 20"
 									>
@@ -82,7 +82,7 @@ export const Sidebar = () => {
 									</svg>
 								) : (
 									<svg
-										className="fill-yellow-500 hidden dark:block"
+										className="h-12 w-12 fill-yellow-500 bg-white rounded-full"
 										fill="currentColor"
 										viewBox="0 0 20 20"
 									>
