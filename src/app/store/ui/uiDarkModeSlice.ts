@@ -4,6 +4,7 @@ interface UIDarkMode {
 	darkMode: "light" | "dark";
 }
 
+//TODO: revisar por que se genera el error de hidratación cuando se usa el localstorage como incializador
 const getInitialStateLocalStorage = (): UIDarkMode => {
 	if (typeof localStorage === "undefined") return {darkMode: "light"};
 
