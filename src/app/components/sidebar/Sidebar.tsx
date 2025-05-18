@@ -83,9 +83,13 @@ export const Sidebar = () => {
 
 	useEffect(() => {
 		setMounted(true);
+
+		return () => {
+			localStorage.clear();
+		};
 	}, []);
 
-	if (!mounted) return <Skeleton />;
+	if (!mounted || darkMode === null) return <Skeleton />;
 
 	return (
 		<div

@@ -19,8 +19,8 @@ const WidgetsGrid = () => {
 
 	return (
 		<div className="grid md:grid-cols-4 sm:grid-cols-1 gap-4 p-4 ">
-			{counter.map((item) => {
-				const uniqueKey = crypto.randomUUID();
+			{counter.map((item, i) => {
+				const uniqueKey = "simpleWidget" + i;
 				return <SimpleWidget key={uniqueKey} {...item} />;
 			})}
 		</div>
