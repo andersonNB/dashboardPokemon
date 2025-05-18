@@ -3,7 +3,7 @@ import WidgetsGrid from "@/app/components/dashboard/WidgetsGrid";
 import PasteUploader from "@/app/components/PasteUploader";
 
 export const metadata = {
-	title: "Dashboard",
+	title: "Dashboard 🪼",
 	description: "here is a general info",
 };
 

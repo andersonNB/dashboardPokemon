@@ -3,7 +3,7 @@ import {getPokemons} from "@/app/services";
 import React from "react";
 
 const PokemonPage = async () => {
-	const pokemons = await getPokemons(Math.random() * 5, 0);
+	const pokemons = await getPokemons();
 	return (
 		<div className="flex flex-col gap-3 bg-yellow-400  ml-4  w-full">
 			<span className="text-xl font-semibold">
