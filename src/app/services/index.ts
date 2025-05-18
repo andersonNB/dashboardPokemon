@@ -9,7 +9,7 @@ import {Pokemon, SimplePokemon} from "../pokemons";
  * @throws {Error} If there is an error fetching the Pokémon data.
  */
 export const getPokemons = async (
-	limit = 20,
+	limit = 30,
 	offset = 0
 ): Promise<SimplePokemon[]> => {
 	const data: Pokemon = await fetch(

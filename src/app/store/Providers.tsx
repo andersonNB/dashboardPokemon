@@ -1,25 +1,31 @@
 "use client";
-import {Provider} from "react-redux";
+import {Provider, useDispatch} from "react-redux";
 import {store} from ".";
 import React, {useEffect} from "react";
 import {setFavoritePokemons} from "./pokemons/pokemonSlice";
-import {setInitTheme} from "./ui/uiDarkModeSlice";
 
 interface Props {
 	children: React.ReactNode;
 }
 
 export const Providers = ({children}: Props) => {
+	return (
+		<Provider store={store}>
+			<InnerInitializer>{children}</InnerInitializer>
+		</Provider>
+	);
+};
+
+const InnerInitializer = ({children}: {children: React.ReactNode}) => {
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		const favorites = JSON.parse(
 			localStorage.getItem("favorite-pokemons") ?? "{}"
 		);
 
-		const theme = localStorage.getItem("theme") as "light" | "dark" | null;
+		dispatch(setFavoritePokemons(favorites));
+	}, [dispatch]);
 
-		store.dispatch(setFavoritePokemons(favorites));
-		store.dispatch(setInitTheme({darkMode: theme}));
-	}, []);
-
-	return <Provider store={store}>{children}</Provider>;
+	return <>{children}</>;
 };

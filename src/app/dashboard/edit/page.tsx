@@ -2,7 +2,7 @@ import React from "react";
 
 const EditPage = () => {
 	return (
-		<div className="overflow-hidden overflow-y-auto ">
+		<div className="overflow-hidden overflow-y-auto dark:text-white ">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, fugiat eaque
 			id deserunt, repellat consectetur voluptas odio itaque quia, atque esse.
 			Incidunt quae, quos modi aperiam quaerat nisi totam odio! Aperiam illo

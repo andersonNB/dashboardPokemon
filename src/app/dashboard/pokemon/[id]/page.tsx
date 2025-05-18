@@ -113,56 +113,52 @@ export default function PokemonPage({params}: Props) {
 
 	return (
 		<div className="flex mt-5 flex-col items-center text-slate-800">
-			<div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white shadow-lg p-3">
-				<div className="mt-2 mb-8 w-full  ">
-					<div className="flex  items-center justify-between ">
-						<h1 className="px-2 text-xl font-bold text-slate-700 capitalize">
-							#{pokemon?.id} {pokemon?.name}
-						</h1>
-						<Link href="/dashboard/pokemons">
-							<p className="text-slate-700 capitalize  flex items-center gap-2 ">
-								<FaArrowLeft />
-								Regresar
-							</p>
-						</Link>
-					</div>
+			<div className="flex flex-col items-center rounded-[20px] w-[700px] mx-auto dark:bg-white dark:text-black shadow-lg p-3 gap-2 bg-[#1A2238] text-white">
+				<div className="flex justify-between w-full">
+					<h1 className="px-2 text-xl font-bold capitalize">
+						#{pokemon?.id} {pokemon?.name}
+					</h1>
+					<Link href="/dashboard/pokemons">
+						<p className=" capitalize  flex items-center gap-2 ">
+							<FaArrowLeft />
+							Regresar
+						</p>
+					</Link>
+				</div>
 
-					<div className="flex flex-col justify-center items-center">
-						<div
-							className="relative w-[150px] h-[150px]"
-							onMouseEnter={() => setIsHovered(true)}
-							onMouseLeave={() => setIsHovered(false)}
-						>
-							{isHovered ? (
-								<video
-									src="/videos/pokemon-demo.mp4"
-									autoPlay
-									loop
-									muted
-									className="w-[150px] h-[150px] object-contain opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
-								/>
-							) : (
-								<Image
-									src={pokemon?.sprites.other?.dream_world.front_default ?? ""}
-									width={150}
-									height={150}
-									alt={`Imagen del pokemon ${pokemon?.name}`}
-									className="mb-5"
-								/>
-							)}
-						</div>
-
-						<div className="flex flex-wrap">
-							{pokemon?.moves.map((move) => (
-								<p key={move.move.name} className="mr-2 capitalize">
-									{move.move.name}
-								</p>
-							))}
-						</div>
+				<div className="flex items-center justify-center w-full">
+					<div
+						onMouseEnter={() => setIsHovered(true)}
+						onMouseLeave={() => setIsHovered(false)}
+					>
+						{isHovered ? (
+							<video
+								src="/videos/pokemon-demo.mp4"
+								autoPlay
+								loop
+								muted
+								className="w-[100px] h-[100px] object-contain opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
+							/>
+						) : (
+							<Image
+								src={pokemon?.sprites.other?.dream_world.front_default ?? ""}
+								alt={`Imagen del pokemon ${pokemon?.name}`}
+								width={100}
+								height={100}
+							/>
+						)}
 					</div>
 				</div>
 
-				<div className="grid grid-cols-2 gap-4 px-2 w-full">
+				<div className="flex flex-wrap">
+					{pokemon?.moves.map((move) => (
+						<p key={move.move.name} className="mr-2 capitalize">
+							{move.move.name}
+						</p>
+					))}
+				</div>
+
+				<div className="grid grid-cols-2 gap-4 px-2 w-full text-black">
 					<InfoCard label="Types">
 						{pokemon?.types.map((type) => (
 							<p key={type.slot} className="mr-2 capitalize">

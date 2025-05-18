@@ -94,16 +94,17 @@ export const Sidebar = () => {
 	return (
 		<div
 			id="menu"
-			className="bg-gray-900  z-10 text-slate-300 w-64 left-0 dark:text-white "
+			className="bg-gray-900  z-10 text-slate-300 w-64 left-0 dark:text-white dark:bg-white"
 			style={{width: "350px"}}
 		>
-			<div id="logo" className="my-4 px-6">
-				<div className="flex items-center gap-2 text-lg md:text-2xl font-bold text-white">
-					<IoLogoReact className="inline-block text-blue-500 rotate-180 animate-spin " />
-					<div className="flex items-center justify-between w-full">
-						<div>
-							Dash <span className="text-blue-500">8.</span>
-						</div>
+			<div id="logo" className="p-2 px-6 dark:bg-slate-400">
+				<div
+					className="flex items-center gap-2 text-lg md:text-2xl font-bold text-white
+				"
+				>
+					<IoLogoReact className="inline-block text-blue-500 rotate-180 animate-spin w-9 " />
+					<div className="flex items-center justify-between w-full dark:text-black">
+						<div>Dashboard</div>
 						<div className="flex justify-center items-center">
 							<button
 								className="h-12 w-12 dark:bg-white rounded-full "
@@ -114,9 +115,6 @@ export const Sidebar = () => {
 						</div>
 					</div>
 				</div>
-				<p className="text-slate-500 text-sm">
-					Manage your actions and activities
-				</p>
 			</div>
 			<div id="profile" className="px-6 py-10">
 				<p className="text-slate-500">Welcome back,</p>
@@ -124,13 +122,13 @@ export const Sidebar = () => {
 					<span>
 						<Image
 							className="rounded-full w-8 h-8"
-							src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=128&q=80"
+							src="/img/develop.PNG"
 							alt=""
 							height={32}
 							width={32}
 						/>
 					</span>
-					<span className="text-sm md:text-base font-bold">
+					<span className="text-sm md:text-base font-bold dark:text-black">
 						Anderson Navarro
 					</span>
 				</Link>
