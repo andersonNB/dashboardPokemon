@@ -20,11 +20,12 @@ const InnerInitializer = ({children}: {children: React.ReactNode}) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const favorites = JSON.parse(
-			localStorage.getItem("favorite-pokemons") ?? "{}"
-		);
-
-		dispatch(setFavoritePokemons(favorites));
+		if (typeof window !== "undefined") {
+			const favorites = JSON.parse(
+				localStorage.getItem("favorite-pokemons") ?? "{}"
+			);
+			dispatch(setFavoritePokemons(favorites));
+		}
 	}, [dispatch]);
 
 	return <>{children}</>;

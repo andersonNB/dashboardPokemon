@@ -1,8 +1,8 @@
 "use client";
 import {SimplePokemon} from "@/app/pokemons";
+import React, {useEffect, useState} from "react";
 import {PokemonGrid} from "@/app/pokemons/components/PokemonGrid";
 import {useAppSelector} from "@/app/store";
-import {useEffect, useState} from "react";
 import {IoHeartOutline} from "react-icons/io5";
 
 const PokemonPage = () => {

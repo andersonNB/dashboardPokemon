@@ -3,12 +3,14 @@ import counterReducer from "./counter/counterSlice";
 import {useDispatch, useSelector} from "react-redux";
 import pokemonReducer from "./pokemons/pokemonSlice";
 import uiDarkModeReducer from "./ui/uiDarkModeSlice";
+import tabsReducer from "./tabs/tabsSlices";
 
 export const store = configureStore({
 	reducer: {
 		counter: counterReducer,
 		pokemons: pokemonReducer,
 		ui: uiDarkModeReducer,
+		tabs: tabsReducer,
 	},
 	// middleware: (getDefaultMiddleware) =>
 	// 	getDefaultMiddleware().concat(localStorageMiddleware),
