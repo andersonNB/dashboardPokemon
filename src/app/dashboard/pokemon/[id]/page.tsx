@@ -5,6 +5,7 @@ import React, {use, useEffect, useState} from "react";
 import {Pokemon} from "@/app/pokemons/interfaces/pokemon";
 import {FaArrowLeft} from "react-icons/fa";
 import Link from "next/link";
+import notFoundImagen from "../../../../../public/img/page not found.png";
 
 interface Props {
 	params: Promise<{id: string}>;
@@ -141,7 +142,10 @@ export default function PokemonPage({params}: Props) {
 							/>
 						) : (
 							<Image
-								src={pokemon?.sprites.other?.dream_world.front_default ?? ""}
+								src={
+									pokemon?.sprites.other?.dream_world.front_default ??
+									notFoundImagen
+								}
 								alt={`Imagen del pokemon ${pokemon?.name}`}
 								width={100}
 								height={100}
