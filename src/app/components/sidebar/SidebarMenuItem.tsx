@@ -16,7 +16,6 @@ export const SidebarMenuItem = (props: Props) => {
 	const {path, icon, title, subTitle} = props;
 	const pathname = usePathname();
 	const dispatch = useDispatch();
-
 	const isCurrentPath = pathname === path;
 
 	const handleChangeTab = () => {
