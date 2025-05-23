@@ -4,8 +4,6 @@ const initialState: {tab: string} = {
 	tab: "",
 };
 
-//  /dashboard/main, /dashboard/counter, /dashboard/edit, /dashboard/pokemons /dashboard/favorites
-
 const tabsSlice = createSlice({
 	name: "tabs",
 	initialState,
