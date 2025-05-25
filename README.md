@@ -39,4 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 1. Same value on first render our component
 2. Skeleton or loading component for the await response
-3. useEffect to be sure to set the same value (i don't know how good a practice it is)
+3. useEffect to be sure to set the same value (i don't know how good a practice it is);
