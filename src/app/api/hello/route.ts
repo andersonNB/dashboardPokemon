@@ -5,9 +5,3 @@ export async function GET(request: Request) {
 		request: request.method,
 	});
 }
-
-export async function POST(request: Request) {
-	return NextResponse.json({
-		request: request.method,
-	});
-}
