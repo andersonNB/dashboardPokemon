@@ -10,6 +10,6 @@ export async function POST(request: Request) {
 	return NextResponse.json({
 		hola: "Mundo",
 		method: request.method,
-		// status: request.headers,
+		status: request.headers,
 	});
 }
