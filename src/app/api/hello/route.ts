@@ -11,5 +11,6 @@ export async function POST(request: Request) {
 		hola: "Mundo",
 		method: request.method,
 		status: request.headers,
+		code: request.cache,
 	});
 }
