@@ -12,5 +12,6 @@ export async function POST(request: Request) {
 		method: request.method,
 		status: request.headers,
 		code: request.cache,
+		message: request.credentials,
 	});
 }
