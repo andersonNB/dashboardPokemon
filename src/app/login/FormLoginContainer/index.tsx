@@ -11,6 +11,7 @@ const FormLoginContainer = () => {
 			<form className="flex flex-col justify-center items-center gap-2">
 				<input type="text" title="Correo electronico" />
 				<input type="text" title="Contraseña" />
+				<button>Iniciar sesión</button>
 			</form>
 		</div>
 	);
