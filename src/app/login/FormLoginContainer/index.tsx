@@ -12,6 +12,7 @@ const FormLoginContainer = () => {
 				<input type="text" title="Correo electronico" />
 				<input type="text" title="Contraseña" />
 				<button>Iniciar sesión</button>
+				<input type="checkbox" title="Recordar" />
 			</form>
 		</div>
 	);
