@@ -29,7 +29,7 @@ const FormLoginContainer = () => {
 					</button>
 				</div>
 				<div className="flex gap-2 items-center w-full justify-end">
-					<a href="#">¿Has olvidado la contraseña?</a>
+					{/* <a href="#">¿Has olvidado la contraseña?</a> */}
 				</div>
 			</form>
 		</div>
