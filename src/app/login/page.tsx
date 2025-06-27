@@ -5,12 +5,12 @@ import FormLoginContainer from "./FormLoginContainer";
 
 const LoginPage = () => {
 	return (
-		<div className="flex justify-center items-center w-full h-screen bg-rose-400 ">
-			<div className="flex gap-2 bg-slate-500 rounded-md p-3 w-4/5 h-[600px] ">
-				<div className="h-full">
+		<div className="flex justify-center items-center w-full h-screen">
+			<div className="flex gap-2 bg-white rounded-md p-3 w-4/5 h-[600px]  border border-gray-300 shadow-lg">
+				<div className="h-[95%]">
 					<Image src={login} alt="imagen login" style={{borderRadius: 8}} />
 				</div>
-				<div className="h-full w-full bg-red-400">
+				<div className="flex items-center justify-center h-full w-full border border-gray-300 rounded-md">
 					<FormLoginContainer />
 				</div>
 			</div>
