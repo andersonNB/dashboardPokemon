@@ -20,7 +20,6 @@ const FormLoginContainer = () => {
 				/>
 				<input
 					type="password"
-					title="Contraseña"
 					placeholder="Contraseña"
 					className="h-12 p-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
 					required
