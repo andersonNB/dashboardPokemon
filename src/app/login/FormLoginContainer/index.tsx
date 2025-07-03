@@ -10,7 +10,7 @@ const FormLoginContainer = () => {
 				</span>
 			</div>
 
-			<form className="flex flex-col gap-3 justify-center h-[70%] ">
+			<form className="flex flex-col gap-3 justify-center h-[70%]">
 				<input
 					type="text"
 					title="Email"
@@ -34,7 +34,7 @@ const FormLoginContainer = () => {
 						href="#"
 						className="text-blue-950 text-sm  hover:underline hover:text-blue-500 transition-all"
 					>
-						¿Has olvidado la contraseña?
+						¿Olvidaste tu contraseña?
 					</a>
 				</div>
 			</form>
