@@ -1,3 +1,4 @@
+import router from "next/router";
 import React from "react";
 
 const FormLoginContainer = () => {
@@ -33,6 +34,9 @@ const FormLoginContainer = () => {
 					<a
 						href="#"
 						className="text-blue-950 text-sm  hover:underline hover:text-blue-500 transition-all"
+						onClick={() => {
+							router.push("/login/forgot-password");
+						}}
 					>
 						¿Olvidaste tu contraseña?
 					</a>
