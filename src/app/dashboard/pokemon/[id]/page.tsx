@@ -113,7 +113,7 @@ export default function PokemonPage({params}: Props) {
 	}
 
 	return (
-		<div className="flex mt-5 flex-col items-center text-slate-800">
+		<div className="flex mt-5 flex-col items-center text-slate-800 w-full">
 			<div className="flex flex-col items-center rounded-[20px] w-[700px] mx-auto dark:bg-white dark:text-black shadow-lg p-3 gap-2 bg-[#1A2238] text-white">
 				<div className="flex justify-between w-full">
 					<h1 className="px-2 text-xl font-bold capitalize">

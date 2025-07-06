@@ -14,6 +14,8 @@ import {useAppDispatch, useAppSelector} from "@/app/store";
 import {toggleMode} from "@/app/store/ui/uiDarkModeSlice";
 import Link from "next/link";
 import Skeleton from "./Skeleton";
+import {ButtonLogOut} from "../Login/ButtonLogOut";
+import {FaShareNodes} from "react-icons/fa6";
 
 const menuItems = [
 	{
@@ -45,6 +47,12 @@ const menuItems = [
 		icon: <IoHeart size={40} />,
 		title: "Favoritos",
 		subTitle: "Pokemons favoritos",
+	},
+	{
+		path: "",
+		icon: <FaShareNodes size={40} />,
+		title: "Algoritmos",
+		subTitle: "sección dedicada a resolver algoritmos",
 	},
 ];
 
@@ -145,6 +153,9 @@ export const Sidebar = () => {
 							{...item}
 						/>
 					))}
+			</div>
+			<div className="flex justify-end items-center w-full  mt-10 px-6">
+				<ButtonLogOut />
 			</div>
 		</div>
 	);
