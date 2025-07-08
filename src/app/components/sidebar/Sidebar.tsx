@@ -49,7 +49,7 @@ const menuItems = [
 		subTitle: "Pokemons favoritos",
 	},
 	{
-		path: "",
+		path: "/dashboard/algorithms",
 		icon: <FaShareNodes size={40} />,
 		title: "Algoritmos",
 		subTitle: "sección dedicada a resolver algoritmos",
