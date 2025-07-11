@@ -103,7 +103,7 @@ const FormLoginContainer = () => {
 						href="#"
 						className="text-blue-950 text-sm  hover:underline hover:text-blue-500 transition-all"
 					>
-						¿Olvidaste tu contraseña??
+						¿Olvidaste tu contraseña?
 					</a>
 				</div>
 			</form>
