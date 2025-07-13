@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import pokemonReducer from "./pokemons/pokemonSlice";
 import uiDarkModeReducer from "./ui/uiDarkModeSlice";
 import tabsReducer from "./tabs/tabsSlices";
+import loginReducer from "./login/loginSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
 		pokemons: pokemonReducer,
 		ui: uiDarkModeReducer,
 		tabs: tabsReducer,
+		login: loginReducer,
 	},
 	// middleware: (getDefaultMiddleware) =>
 	// 	getDefaultMiddleware().concat(localStorageMiddleware),

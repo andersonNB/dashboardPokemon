@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import {useRouter} from "next/navigation";
 import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
+import {useAppSelector} from "@/app/store";
 
 const FormLoginContainer = () => {
 	const [email, setEmail] = useState("");
@@ -12,14 +13,15 @@ const FormLoginContainer = () => {
 		password: "",
 	});
 	const router = useRouter();
+	const {user} = useAppSelector((state) => state.login);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!checkEmail(email)) {
+		if (!checkEmail(email) || user.email !== email) {
 			setError({...error, email: "El correo no es válido"});
 			return;
 		}
-		if (password.length < 8) {
+		if (password.length < 8 || user.password !== password) {
 			setError({
 				...error,
 				password: "La contraseña debe tener al menos 8 caracteres",
@@ -103,7 +105,7 @@ const FormLoginContainer = () => {
 						href="#"
 						className="text-blue-950 text-sm  hover:underline hover:text-blue-500 transition-all"
 					>
-						¿Olvidaste tu contraseña???
+						¿Olvidaste tu contraseña?
 					</a>
 				</div>
 			</form>

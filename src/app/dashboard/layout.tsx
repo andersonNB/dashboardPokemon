@@ -1,6 +1,5 @@
 import {Metadata} from "next";
 import React from "react";
-import {Providers} from "../store/Providers";
 import {Sidebar} from "../components";
 
 export const metadata: Metadata = {
@@ -16,10 +15,8 @@ export default function DashboardLayout({
 	return (
 		<div className="flex h-full  w-full aliased selection:bg-blue-600 selection:text-white">
 			<div className="flex w-full min-h-screen justify-center">
-				<Providers>
-					<Sidebar />
-					{children}
-				</Providers>
+				<Sidebar />
+				{children}
 			</div>
 		</div>
 	);
