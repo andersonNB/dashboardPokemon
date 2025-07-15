@@ -16,7 +16,7 @@ export default function DashboardLayout({
 		<div className="flex h-full  w-full aliased selection:bg-blue-600 selection:text-white">
 			<div className="flex w-full min-h-screen justify-center">
 				<Sidebar />
-				{children}
+				<div className="flex-1">{children}</div>
 			</div>
 		</div>
 	);
