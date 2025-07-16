@@ -53,7 +53,8 @@ const FormLoginContainer = () => {
 					type="text"
 					title="Email"
 					placeholder="Email"
-					className="h-12 p-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className={`h-12 p-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500
+					  ${error.email && "border-red-500"}`}
 					required
 					value={email}
 					onChange={(e) => {
@@ -70,7 +71,9 @@ const FormLoginContainer = () => {
 					<input
 						type={isVisible ? "text" : "password"}
 						placeholder="Contraseña"
-						className="h-12 p-1 pr-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+						className={`h-12 p-1 pr-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full ${
+							error.password && "border-red-500"
+						} `}
 						required
 						value={password}
 						onChange={(e) => {
