@@ -24,7 +24,10 @@ const FormLoginContainer = () => {
 		if (password.length < 8 || user.password !== password) {
 			setError({
 				...error,
-				password: "La contraseña debe tener al menos 8 caracteres",
+				password:
+					password.length < 8
+						? "La contraseña debe tener al menos 8 caracteres"
+						: "La contraseña es incorrecta",
 			});
 			return;
 		}
@@ -50,9 +53,9 @@ const FormLoginContainer = () => {
 				onSubmit={handleSubmit}
 			>
 				<input
-					type="text"
-					title="Email"
-					placeholder="Email"
+					type="email"
+					title="Correo electrónico"
+					placeholder="Correo electrónico"
 					className={`h-12 p-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500
 					  ${error.email && "border-red-500"}`}
 					required

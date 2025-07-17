@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function CounterPage() {
 	return (
-		<div className="bg-red-500  flex items-center justify-center flex-col w-full">
+		<div className="bg-red-500  flex items-center justify-center flex-col w-full h-full">
 			<span className="text-black dark:text-white ">
 				Productos en el carrito
 			</span>
