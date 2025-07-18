@@ -1,9 +1,10 @@
 import {SimplePokemon} from "@/app/pokemons";
+import {Pokemon} from "@/app/pokemons/interfaces/pokemon";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface PokemonsState {
 	favorites: {
-		[key: string]: SimplePokemon;
+		[key: string]: SimplePokemon | Pokemon;
 	};
 }
 
@@ -39,7 +40,7 @@ const pokemonsSlice = createSlice({
 		) {
 			state.favorites = action.payload;
 		},
-		toggleFavorite(state, action: PayloadAction<SimplePokemon>) {
+		toggleFavorite(state, action: PayloadAction<SimplePokemon | Pokemon>) {
 			const pokemon = action.payload;
 			const {id} = pokemon;
 

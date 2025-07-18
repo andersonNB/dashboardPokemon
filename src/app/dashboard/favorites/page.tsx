@@ -25,7 +25,7 @@ const PokemonPage = () => {
 	}
 
 	return (
-		<div className="flex flex-col gap-3 bg-yellow-400  ml-4  w-full">
+		<div className="flex flex-col gap-3 bg-yellow-400 w-full h-full">
 			<span className="text-xl font-semibold">
 				Pokémons Favoritos <small className="text-gray-500">Global state</small>{" "}
 			</span>

@@ -6,6 +6,10 @@ import {Pokemon} from "@/app/pokemons/interfaces/pokemon";
 import {FaArrowLeft} from "react-icons/fa";
 import Link from "next/link";
 import notFoundImagen from "../../../../../public/img/page not found.png";
+import {IoHeart, IoHeartOutline} from "react-icons/io5";
+import {useDispatch} from "react-redux";
+import {toggleFavorite} from "@/app/store/pokemons/pokemonSlice";
+import {useAppSelector} from "@/app/store";
 
 interface Props {
 	params: Promise<{id: string}>;
@@ -87,6 +91,11 @@ export default function PokemonPage({params}: Props) {
 	const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 	const [isHovered, setIsHovered] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+
+	const isFavorite = useAppSelector(
+		(state) => !!state.pokemons.favorites[pokemon?.id ?? ""]
+	);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -127,8 +136,19 @@ export default function PokemonPage({params}: Props) {
 					</Link>
 				</div>
 
-				<div className="flex items-center justify-center w-full">
+				<div className="flex items-center w-full gap-0.5 justify-center">
 					<div
+						className="flex flex-col items-end ml-0.5 cursor-pointer "
+						onClick={() => pokemon && dispatch(toggleFavorite(pokemon))}
+					>
+						{isFavorite ? (
+							<IoHeart color="red" size={50} />
+						) : (
+							<IoHeartOutline color="red" size={50} />
+						)}
+					</div>
+					<div
+						className="flex flex-1 items-center justify-center min-h-2 "
 						onMouseEnter={() => setIsHovered(true)}
 						onMouseLeave={() => setIsHovered(false)}
 					>
