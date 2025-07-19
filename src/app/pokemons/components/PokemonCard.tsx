@@ -8,7 +8,13 @@ import {useAppSelector} from "@/app/store";
 import {useDispatch} from "react-redux";
 import {toggleFavorite} from "@/app/store/pokemons/pokemonSlice";
 
-export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
+export const PokemonCard = ({
+	pokemon,
+	index = 1,
+}: {
+	pokemon: SimplePokemon;
+	index?: number;
+}) => {
 	const isFavorite = useAppSelector(
 		(state) => !!state.pokemons.favorites[pokemon?.id]
 	);
@@ -18,6 +24,11 @@ export const PokemonCard = ({pokemon}: {pokemon: SimplePokemon}) => {
 	return (
 		<div className="mx-auto right-0 mt-2 w-60">
 			<div className="bg-white rounded overflow-hidden shadow-lg">
+				<div className="bg-gray-800 text-white pl-2 pt-2 w-full">
+					<div className="bg-white text-black w-[26px] rounded-full h-[26px] text-center ">
+						{index + 1}
+					</div>
+				</div>
 				<div className="flex flex-col items-center text-center p-6 bg-gray-800 border-b">
 					{/* priority false hace que la imagen sea cargada bajo demanda */}
 					<Image

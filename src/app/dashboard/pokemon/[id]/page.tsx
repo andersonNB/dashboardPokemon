@@ -125,9 +125,21 @@ export default function PokemonPage({params}: Props) {
 		<div className="flex mt-5 flex-col items-center text-slate-800 w-full">
 			<div className="flex flex-col items-center rounded-[20px] w-[700px] mx-auto dark:bg-white dark:text-black shadow-lg p-3 gap-2 bg-[#1A2238] text-white">
 				<div className="flex justify-between w-full">
-					<h1 className="px-2 text-xl font-bold capitalize">
-						#{pokemon?.id} {pokemon?.name}
-					</h1>
+					<div className="flex items-center">
+						<h1 className="px-2 text-xl font-bold capitalize">
+							#{pokemon?.id} {pokemon?.name}
+						</h1>
+						<div
+							className="flex flex-col items-end ml-0.5 cursor-pointer "
+							onClick={() => pokemon && dispatch(toggleFavorite(pokemon))}
+						>
+							{isFavorite ? (
+								<IoHeart color="red" size={40} />
+							) : (
+								<IoHeartOutline color="red" size={40} />
+							)}
+						</div>
+					</div>
 					<Link href="/dashboard/pokemons">
 						<p className=" capitalize  flex items-center gap-2 ">
 							<FaArrowLeft />
@@ -136,19 +148,9 @@ export default function PokemonPage({params}: Props) {
 					</Link>
 				</div>
 
-				<div className="flex items-center w-full gap-0.5 justify-center">
+				<div className="flex items-center w-full gap-0.5 justify-center h-[160px] ">
 					<div
-						className="flex flex-col items-end ml-0.5 cursor-pointer "
-						onClick={() => pokemon && dispatch(toggleFavorite(pokemon))}
-					>
-						{isFavorite ? (
-							<IoHeart color="red" size={50} />
-						) : (
-							<IoHeartOutline color="red" size={50} />
-						)}
-					</div>
-					<div
-						className="flex flex-1 items-center justify-center min-h-2 "
+						className="flex items-center justify-center  h-full"
 						onMouseEnter={() => setIsHovered(true)}
 						onMouseLeave={() => setIsHovered(false)}
 					>
@@ -169,6 +171,7 @@ export default function PokemonPage({params}: Props) {
 								alt={`Imagen del pokemon ${pokemon?.name}`}
 								width={100}
 								height={100}
+								className="object-contain"
 							/>
 						)}
 					</div>
