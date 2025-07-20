@@ -1,9 +1,10 @@
 "use client";
+import React from "react";
 import {SimplePokemon} from "@/app/pokemons";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {PokemonGrid} from "@/app/pokemons/components/PokemonGrid";
 import {useAppSelector} from "@/app/store";
-import {IoHeartOutline} from "react-icons/io5";
+import {NoFavorites} from "./NoFavorites";
 
 const PokemonPage = () => {
 	const pokemonsStore = useAppSelector((state) => state.pokemons.favorites);
@@ -36,12 +37,3 @@ const PokemonPage = () => {
 };
 
 export default PokemonPage;
-
-export const NoFavorites = () => {
-	return (
-		<div className="flex flex-col h-[50vh] items-center justify-center ">
-			<IoHeartOutline size={100} className="text-red-500" />
-			<span className="text-lg">Aún no hay favoritos</span>
-		</div>
-	);
-};
