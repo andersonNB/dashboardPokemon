@@ -1,6 +1,6 @@
 "use client"; // Error boundaries must be Client Components
 
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 
 export default function ErrorPage({
 	error,
