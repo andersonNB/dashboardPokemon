@@ -143,7 +143,7 @@ export default function PokemonPage({params}: Props) {
 					<Link href="/dashboard/pokemons">
 						<p className=" capitalize  flex items-center gap-2 ">
 							<FaArrowLeft />
-							Regresarr
+							Regresar
 						</p>
 					</Link>
 				</div>
