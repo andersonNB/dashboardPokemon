@@ -22,7 +22,7 @@ const PokemonPage = () => {
 			return <PokemonGrid pokemons={pokemons} />;
 		}
 
-		return "Cargando...";
+		return "Cargando..";
 	}
 
 	return (
