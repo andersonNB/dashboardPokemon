@@ -31,6 +31,7 @@ const FormLoginContainer = () => {
 			});
 			return;
 		}
+		//router.push("/dashboard/main");
 		router.push("/dashboard");
 	};
 
