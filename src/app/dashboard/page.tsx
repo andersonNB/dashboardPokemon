@@ -11,7 +11,6 @@ export default function DashboardPage() {
 				className="bg-cover bg-center dark:text-white  "
 				priority
 			/>
-			.
 		</div>
 	);
 }
