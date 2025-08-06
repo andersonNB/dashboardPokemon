@@ -1,75 +1,178 @@
 "use client";
-import React from "react";
+import React, {useMemo, useState} from "react";
+import {
+	DndContext,
+	closestCenter,
+	PointerSensor,
+	KeyboardSensor,
+	useSensor,
+	useSensors,
+	DragEndEvent,
+} from "@dnd-kit/core";
+import {
+	SortableContext,
+	useSortable,
+	verticalListSortingStrategy,
+	arrayMove,
+} from "@dnd-kit/sortable";
+import {CSS} from "@dnd-kit/utilities";
 
-const AlgorithmsPage = () => {
-	const frontEnd = new Set(["JavaScript", "HTML", "CSS"]);
-	const backEnd = new Set(["JavaScript", "Python", "Go", "Java"]);
+const DraggableItem = ({id}: {id: string}) => {
+	const {attributes, listeners, setNodeRef, transform, transition} =
+		useSortable({id});
 
-	console.log(frontEnd.intersection(backEnd));
+	const style = {
+		transform: CSS.Transform.toString(transform),
+		transition,
+		padding: "8px",
+		backgroundColor: "#fff",
+		border: "1px solid #ccc",
+		marginBottom: "4px",
+		borderRadius: "4px",
+		cursor: "grab",
+	};
 
 	return (
-		<div className="w-full flex items-center justify-center gap-2 dark:text-white text-black  bg-blue-500 h-full p-4">
-			{/*En construcción <RiAlarmWarningFill size={40} />*/}
+		<div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+			{id}
+		</div>
+	);
+};
 
-			<div className="grid grid-cols-2 gap-2 w-full bg-teal-500 ">
-				<div className="bg-yellow-400">
-					{/* Intersección de conjuntos ->
-					  Lenguajes que se usan tanto en frontEnd como en backEnd
-					*/}
-					<h1 className="text-2xl font-bold">Intersección de conjuntos</h1>
+const AlgorithmsPage = () => {
+	const [frontEnd, setFrontEnd] = useState(["JavaScript", "HTML", "CSS"]);
+	const [backEnd, setBackEnd] = useState(["Python", "Go", "Java"]);
 
-					{[...frontEnd.intersection(backEnd)].map((item) => (
+	const sensors = useSensors(
+		useSensor(PointerSensor),
+		useSensor(KeyboardSensor)
+	);
+
+	const intersection = useMemo(
+		() => frontEnd.filter((item) => backEnd.includes(item)),
+		[frontEnd, backEnd]
+	);
+
+	const union = useMemo(
+		() => Array.from(new Set([...frontEnd, ...backEnd])),
+		[frontEnd, backEnd]
+	);
+
+	const difference = useMemo(
+		() => frontEnd.filter((item) => !backEnd.includes(item)),
+		[frontEnd, backEnd]
+	);
+
+	const symmetricDifference = useMemo(() => {
+		const onlyFront = frontEnd.filter((item) => !backEnd.includes(item));
+		const onlyBack = backEnd.filter((item) => !frontEnd.includes(item));
+		return [...onlyFront, ...onlyBack];
+	}, [frontEnd, backEnd]);
+
+	const isSubset = frontEnd.every((item) => backEnd.includes(item));
+	const isSuperset = backEnd.every((item) => frontEnd.includes(item));
+	const isDisjoint = !frontEnd.some((item) => backEnd.includes(item));
+
+	const handleDragEnd = (event: DragEndEvent) => {
+		const {active, over} = event;
+		if (!over || active.id === over.id) return;
+
+		const fromList = frontEnd.includes(active.id as string)
+			? frontEnd
+			: backEnd;
+		const toList = frontEnd.includes(over.id as string) ? frontEnd : backEnd;
+		const setFrom = frontEnd.includes(active.id as string)
+			? setFrontEnd
+			: setBackEnd;
+		const setTo = frontEnd.includes(over.id as string)
+			? setFrontEnd
+			: setBackEnd;
+
+		if (fromList === toList) {
+			const oldIndex = fromList.indexOf(active.id as string);
+			const newIndex = fromList.indexOf(over.id as string);
+			setFrom(arrayMove(fromList, oldIndex, newIndex));
+		} else {
+			const newFrom = fromList.filter((i) => i !== active.id);
+			const newTo = [...toList, active.id as string];
+			setFrom(newFrom);
+			setTo(newTo);
+		}
+	};
+
+	return (
+		<div className="p-6 bg-gray-100 min-h-screen text-black">
+			<DndContext
+				sensors={sensors}
+				collisionDetection={closestCenter}
+				onDragEnd={handleDragEnd}
+			>
+				<div className="grid grid-cols-2 gap-6">
+					{/* Frontend */}
+					<div className="bg-yellow-200 p-4 rounded">
+						<h2 className="text-xl font-bold mb-2">Frontend</h2>
+						<SortableContext
+							items={frontEnd}
+							strategy={verticalListSortingStrategy}
+						>
+							{frontEnd.map((item) => (
+								<DraggableItem key={item} id={item} />
+							))}
+						</SortableContext>
+					</div>
+
+					{/* Backend */}
+					<div className="bg-red-200 p-4 rounded">
+						<h2 className="text-xl font-bold mb-2">Backend</h2>
+						<SortableContext
+							items={backEnd}
+							strategy={verticalListSortingStrategy}
+						>
+							{backEnd.map((item) => (
+								<DraggableItem key={item} id={item} />
+							))}
+						</SortableContext>
+					</div>
+				</div>
+			</DndContext>
+
+			{/* Resultados */}
+			<div className="mt-6 grid grid-cols-3 gap-4">
+				<div className="bg-blue-300 p-4 rounded">
+					<h3 className="font-bold">Intersección</h3>
+					{intersection.map((item) => (
 						<div key={item}>{item}</div>
 					))}
 				</div>
-
-				<div className="bg-red-400">
-					{/* Unión de conjuntos -> todos los lenguajes en ambos conjuntos sin repetidos
-					 */}
-					<h1 className="text-2xl font-bold">Unión de conjuntos</h1>
-					{[...frontEnd.union(backEnd)].map((item) => (
+				<div className="bg-green-300 p-4 rounded">
+					<h3 className="font-bold">Unión</h3>
+					{union.map((item) => (
 						<div key={item}>{item}</div>
 					))}
 				</div>
-
-				<div className="bg-blue-400">
-					{/* Diferencia de conjuntos -> lenguajes que están solo en frontEnd */}
-					<h1 className="text-2xl font-bold">Diferencia de conjuntos</h1>
-					{[...frontEnd.difference(backEnd)].map((item) => (
+				<div className="bg-purple-300 p-4 rounded">
+					<h3 className="font-bold">Diferencia (Front - Back)</h3>
+					{difference.map((item) => (
 						<div key={item}>{item}</div>
 					))}
 				</div>
-
-				<div className="bg-amber-600">
-					{/* Exclusivos de front o de back pero no de ambos */}
-					<h1 className="text-2xl font-bold">Exclusivos</h1>
-					{[...frontEnd.symmetricDifference(backEnd)].map((item) => (
-						<div key={item}>{item} </div>
+				<div className="bg-pink-300 p-4 rounded">
+					<h3 className="font-bold">Exclusivos</h3>
+					{symmetricDifference.map((item) => (
+						<div key={item}>{item}</div>
 					))}
 				</div>
-
-				<div className="bg-amber-600">
-					{/* ¿Están todos los lenguajes frontend en backend */}
-					<h1 className="text-2xl font-bold">
-						Todos los lenguajes de front en back
-					</h1>
-					{frontEnd.isSubsetOf(backEnd) ? "verdadero" : "falso"}
+				<div className="bg-orange-300 p-4 rounded">
+					<h3 className="font-bold">¿Front es subconjunto de Back?</h3>
+					{isSubset ? "✅ Sí" : "❌ No"}
 				</div>
-
-				<div className="bg-fuchsia-400">
-					{/* ¿Están todos los lenguajes frontend en backend */}
-					<h1 className="text-2xl font-bold">
-						Front incluye todos los lenguajes backend?
-					</h1>
-					{frontEnd.isSupersetOf(backEnd) ? "verdadero" : "falso"}
+				<div className="bg-fuchsia-300 p-4 rounded">
+					<h3 className="font-bold">¿Front es superconjunto de Back?</h3>
+					{isSuperset ? "✅ Sí" : "❌ No"}
 				</div>
-
-				<div className="bg-green-500">
-					{/* ¿Están todos los lenguajes frontend en backend */}
-					<h1 className="text-2xl font-bold">
-						Verifica si no comparten ningún lenguaje
-					</h1>
-					{frontEnd.isDisjointFrom(backEnd) ? "verdadero" : "falso"}
+				<div className="bg-lime-300 p-4 rounded">
+					<h3 className="font-bold">¿Son disjuntos?</h3>
+					{isDisjoint ? "✅ Sí" : "❌ No"}
 				</div>
 			</div>
 		</div>
