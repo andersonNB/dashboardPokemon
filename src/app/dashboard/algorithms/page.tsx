@@ -20,7 +20,7 @@ import {CSS} from "@dnd-kit/utilities";
 const DraggableItem = ({id}: {id: string}) => {
 	const {attributes, listeners, setNodeRef, transform, transition} =
 		useSortable({id});
-
+	//
 	const style = {
 		transform: CSS.Transform.toString(transform),
 		transition,
