@@ -103,6 +103,7 @@ const AlgorithmsPage = () => {
 	console.log(frontEnd, backEnd);
 	return (
 		<div className="p-6 bg-gray-100 min-h-screen text-black">
+			,
 			<DndContext
 				sensors={sensors}
 				collisionDetection={closestCenter}
@@ -136,7 +137,6 @@ const AlgorithmsPage = () => {
 					</div>
 				</div>
 			</DndContext>
-
 			{/* Resultados */}
 			<div className="mt-6 grid grid-cols-3 gap-4">
 				<div className="bg-blue-300 p-4 rounded">
