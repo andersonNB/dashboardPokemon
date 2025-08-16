@@ -102,7 +102,6 @@ const AlgorithmsPage = () => {
 
 	console.log(frontEnd, backEnd);
 	console.log(intersection, union, difference, symmetricDifference);
-	console.log(isSubset, isSuperset, isDisjoint);
 	return (
 		<div className="p-6 bg-gray-100 min-h-screen text-black">
 			<DndContext
