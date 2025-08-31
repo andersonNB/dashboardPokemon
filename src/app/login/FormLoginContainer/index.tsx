@@ -49,7 +49,7 @@ const FormLoginContainer = () => {
 					<div className="flex w-full flex-col">
 						<span className="text-3xl font-bold w-full">Credenciales</span>
 						<span className="w-full text-gray-600 opacity-90 ">
-							por favor ingrese el correo y la contraseña.
+							por favor ingrese el correo y la contraseña
 						</span>
 					</div>
 
